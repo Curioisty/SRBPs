@@ -1,0 +1,77 @@
+variable T equal 1.0
+units lj
+boundary p p p 
+
+atom_style full
+log log.polymer.txt
+read_data b10.data
+
+
+group AAm   type 1 2  # 1 AAm 2 sc  3 wat
+group mc    molecule 1:20
+group wsc1  molecule 21
+group wsc2  molecule 22
+group wosc1 molecule 23
+group wosc2 molecule 24
+group wat  type 3
+
+
+region 6wall  block -60 60 -60 60 -60 60
+fix w1  mc  wall/region 6wall lj126 1 1 2.5
+
+mass 1 1
+mass 2 4.5
+mass 3 1
+
+region ss sphere 0 0 0 20
+group dmc dynamic mc region ss
+variable Nmc equal count(dmc)
+group dwat dynamic wat region ss
+variable Nwat equal count(dwat)
+
+
+bond_style harmonic
+bond_coeff 1 50  1 
+bond_coeff 2 200 1
+
+angle_style harmonic
+angle_coeff 1 10.0  180.0
+angle_coeff 2 200.0 90.0
+angle_coeff 3 200.0 180.0
+
+pair_style dpd 1.0 1.0 ${rand}
+pair_coeff 1 1 25 1.0 
+pair_coeff 1 2 25 1.25
+pair_coeff 1 3 26.87 1.0
+pair_coeff 2 2 25 1.5
+pair_coeff 2 3 26.87 1.25
+pair_coeff 3 3 25 1.0
+
+dihedral_style harmonic
+dihedral_coeff 1 10 1 2
+
+neighbor 0.2 bin
+comm_modify mode single cutoff 3.0 vel yes
+
+velocity all create ${T}  ${rand}
+fix 1 all nve/limit 0.1
+fix 3 mc recenter 0 0 0
+
+minimize 0.01 0.0001  10000 100000
+
+compute wmsd     wat    msd com yes
+compute wsc1msd  wsc1   msd com yes
+compute wsc2msd  wsc2   msd com yes
+compute wosc1msd wosc1  msd com yes
+compute wosc2msd wosc2  msd com yes
+
+
+thermo_style custom step temp press c_wmsd[4] c_wsc1msd[4] c_wsc2msd[4] c_wosc1msd[4] c_wosc2msd[4]
+thermo 1000
+timestep 0.01
+
+dump 2 AAm  custom 10000 jieguo.lammpstrj id mol type x y z
+dump_modify 1 sort id
+
+run 200000
+write_data b1.data
