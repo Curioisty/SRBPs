@@ -1,0 +1,91 @@
+variable rand equal 123
+variable T equal 1.0
+variable L_old equal 30
+variable L_new equal 40
+units lj
+boundary p p p 
+
+atom_style full
+log log.polymer.txt
+read_data c3.data
+
+
+change_box all x final -${L_new} ${L_new}  y final -${L_new} ${L_new}  z final -${L_new} ${L_new}
+
+region box_all block -${L_new} ${L_new} -${L_new} ${L_new} -${L_new} ${L_new} units box
+region box_old block -${L_old} ${L_old} -${L_old} ${L_old} -${L_old} ${L_old} units box  side out 
+region water_region intersect 2  box_all  box_old
+create_atoms 3 random 296000  ${rand} water_region
+
+group mc type 1 2  # 1 AAm 2 sc  3 wat
+
+region 6wall  block -${L_new} ${L_new} -${L_new} ${L_new} -${L_new} ${L_new}
+fix w1 all  wall/region 6wall lj126 1 1 2.5
+
+group wat type 3
+
+mass 1 1
+mass 2 1.5
+mass 3 1
+
+region ss sphere 0 0 0 10
+group dmc dynamic mc region ss
+variable Nmc equal count(dmc)
+group dwat dynamic wat region ss
+variable Nwat equal count(dwat)
+
+bond_style harmonic
+bond_coeff 1 50  1 
+
+angle_style harmonic
+angle_coeff 1 1.0  180.0
+angle_coeff 2 20.0 90.0
+angle_coeff 3 20.0 180.0
+
+dihedral_style harmonic
+dihedral_coeff 1 10 1 2
+
+
+pair_style dpd 1.0 1.0 ${rand}
+pair_coeff 1 1 53   1.0
+pair_coeff 1 2 53   1.0
+pair_coeff 1 3 54.9 1.0
+pair_coeff 2 2 53   1.0
+pair_coeff 2 3 54.9 1.0
+pair_coeff 3 3 53   1.0
+
+
+neighbor 0.1 bin
+comm_modify mode single cutoff 3.0 vel yes
+
+velocity all create ${T}  ${rand}
+fix 1 all nve/limit 0.1
+fix 3 mc recenter 0 0 0
+
+#minimize 0.01 0.0001  10000 100000
+
+compute rg mc gyration
+variable rg_atom equal c_rg[1]
+compute msd wat msd com yes
+thermo_style custom step temp press cpu c_rg[1] c_msd[1] v_Nmc v_Nwat
+thermo 10000
+timestep 0.02
+
+dump 1 all custom 100000  full.lammpstrj id mol type x y z
+dump 2 mc  custom 10000 jieguo.lammpstrj id mol type x y z
+dump_modify 1 sort id
+dump_modify 2 sort id
+
+run 200000
+write_data d1.data
+run 200000
+write_data d2.data
+run 200000
+write_data d3.data
+run 200000
+write_data d4.data
+run 200000
+write_data d5.data
+
+
+
