@@ -1,0 +1,215 @@
+LAMMPS (29 Aug 2024 - Update 2)
+ERROR: Cannot open file a1.data: No such file or directory (../read_data.cpp:367)
+Last command: read_data a1.data
+LAMMPS (29 Aug 2024 - Update 2)
+Reading data file ...
+  orthogonal box = (-25 -25 -25) to (25 25 25)
+  1 by 1 by 1 MPI processor grid
+  reading atoms ...
+  9080 atoms
+  scanning bonds ...
+  2 = max bonds/atom
+  scanning angles ...
+  2 = max angles/atom
+  scanning dihedrals ...
+  1 = max dihedrals/atom
+  orthogonal box = (-25 -25 -25) to (25 25 25)
+  1 by 1 by 1 MPI processor grid
+  reading bonds ...
+  9040 bonds
+  reading angles ...
+  9000 angles
+  reading dihedrals ...
+  360 dihedrals
+Finding 1-2 1-3 1-4 neighbors ...
+  special bond factors lj:    0        0        0       
+  special bond factors coul:  0        0        0       
+     3 = max # of 1-2 neighbors
+     3 = max # of 1-3 neighbors
+     6 = max # of 1-4 neighbors
+     9 = max # of special neighbors
+  special bonds CPU = 0.003 seconds
+  read_data CPU = 0.063 seconds
+9080 atoms in group mc
+ERROR on proc 0: Substitution for illegal variable rand (../input.cpp:666)
+Last command: create_atoms 3 random 60000 ${rand}  6wall
+Abort(1) on node 0 (rank 0 in comm 0): application called MPI_Abort(MPI_COMM_WORLD, 1) - process 0
+LAMMPS (29 Aug 2024 - Update 2)
+Reading data file ...
+  orthogonal box = (-25 -25 -25) to (25 25 25)
+  1 by 1 by 1 MPI processor grid
+  reading atoms ...
+  9080 atoms
+  scanning bonds ...
+  2 = max bonds/atom
+  scanning angles ...
+  2 = max angles/atom
+  scanning dihedrals ...
+  1 = max dihedrals/atom
+  orthogonal box = (-25 -25 -25) to (25 25 25)
+  1 by 1 by 1 MPI processor grid
+  reading bonds ...
+  9040 bonds
+  reading angles ...
+  9000 angles
+  reading dihedrals ...
+  360 dihedrals
+Finding 1-2 1-3 1-4 neighbors ...
+  special bond factors lj:    0        0        0       
+  special bond factors coul:  0        0        0       
+     3 = max # of 1-2 neighbors
+     3 = max # of 1-3 neighbors
+     6 = max # of 1-4 neighbors
+     9 = max # of special neighbors
+  special bonds CPU = 0.003 seconds
+  read_data CPU = 0.063 seconds
+9080 atoms in group mc
+Created 60000 atoms
+  using lattice units in orthogonal box = (-25 -25 -25) to (25 25 25)
+  create_atoms CPU = 0.020 seconds
+60000 atoms in group wat
+dynamic group dmc defined
+dynamic group dwat defined
+ERROR: Numeric index 2 is out of bounds (1-1) (../bond_harmonic.cpp:129)
+Last command: bond_coeff 2 50 1
+LAMMPS (29 Aug 2024 - Update 2)
+Reading data file ...
+  orthogonal box = (-25 -25 -25) to (25 25 25)
+  1 by 1 by 1 MPI processor grid
+  reading atoms ...
+  9080 atoms
+  scanning bonds ...
+  2 = max bonds/atom
+  scanning angles ...
+  2 = max angles/atom
+  scanning dihedrals ...
+  1 = max dihedrals/atom
+  orthogonal box = (-25 -25 -25) to (25 25 25)
+  1 by 1 by 1 MPI processor grid
+  reading bonds ...
+  9040 bonds
+  reading angles ...
+  9000 angles
+  reading dihedrals ...
+  360 dihedrals
+Finding 1-2 1-3 1-4 neighbors ...
+  special bond factors lj:    0        0        0       
+  special bond factors coul:  0        0        0       
+     3 = max # of 1-2 neighbors
+     3 = max # of 1-3 neighbors
+     6 = max # of 1-4 neighbors
+     9 = max # of special neighbors
+  special bonds CPU = 0.003 seconds
+  read_data CPU = 0.052 seconds
+9080 atoms in group mc
+Created 60000 atoms
+  using lattice units in orthogonal box = (-25 -25 -25) to (25 25 25)
+  create_atoms CPU = 0.014 seconds
+60000 atoms in group wat
+dynamic group dmc defined
+dynamic group dwat defined
+Generated 0 of 3 mixed pair_coeff terms from geometric mixing rule
+WARNING: Dihedrals are defined but no dihedral style is set (../force.cpp:207)
+WARNING: Likewise 1-4 special neighbor interactions != 1.0 (../force.cpp:209)
+Neighbor list info ...
+  update: every = 1 steps, delay = 0 steps, check = yes
+  max neighbors/atom: 2000, page size: 100000
+  master list distance cutoff = 1.2
+  ghost atom cutoff = 3
+  binsize = 0.6, bins = 84 84 84
+  1 neighbor lists, perpetual/occasional/extra = 1 0 0
+  (1) pair soft, perpetual
+      attributes: half, newton on
+      pair build: half/bin/newton
+      stencil: half/bin/3d
+      bin: standard
+Setting up cg style minimization ...
+  Unit style    : lj
+  Current step  : 0
+Per MPI rank memory allocation (min/avg/max) = 47.02 | 47.02 | 47.02 Mbytes
+   Step          Temp          E_pair         E_mol          TotEng         Press     
+         0   1              9.2638102      0.14624723     10.910036      5.6548175    
+         1   1              9.2638102      0.14624723     10.910036      5.6548175    
+Loop time of 0.119153 on 1 procs for 1 steps with 69080 atoms
+
+100.0% CPU use with 1 MPI tasks x no OpenMP threads
+
+Minimization stats:
+  Stopping criterion = quadratic factors are zero
+  Energy initial, next-to-last, final = 
+      9.41005741656752   9.41005741656752   9.41005741656752
+  Force two-norm initial, final = 2.4944066e+70 2.4944066e+70
+  Force max component initial, final = 2.4944066e+70 2.4944066e+70
+  Final line search alpha, max atom move = 2.0044847e-72 0.05
+  Iterations, force evaluations = 1 3
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 0.041921   | 0.041921   | 0.041921   |   0.0 | 35.18
+Bond    | 0.0027655  | 0.0027655  | 0.0027655  |   0.0 |  2.32
+Neigh   | 0.064858   | 0.064858   | 0.064858   |   0.0 | 54.43
+Comm    | 0.0017309  | 0.0017309  | 0.0017309  |   0.0 |  1.45
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0.0042013  | 0.0042013  | 0.0042013  |   0.0 |  3.53
+Other   |            | 0.003675   |            |       |  3.08
+
+Nlocal:          69080 ave       69080 max       69080 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:              0 ave           0 max           0 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:         278991 ave      278991 max      278991 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 278991
+Ave neighs/atom = 4.0386653
+Ave special neighs/atom = 0.81297047
+Neighbor list builds = 2
+Dangerous builds = 1
+Generated 0 of 3 mixed pair_coeff terms from geometric mixing rule
+WARNING: Dihedrals are defined but no dihedral style is set (../force.cpp:207)
+WARNING: Likewise 1-4 special neighbor interactions != 1.0 (../force.cpp:209)
+Setting up Verlet run ...
+  Unit style    : lj
+  Current step  : 1
+  Time step     : 0.01
+Per MPI rank memory allocation (min/avg/max) = 43.27 | 43.27 | 43.27 Mbytes
+   Step          Temp          Press           CPU          c_rg[1]        c_msd[1]        v_Nmc          v_Nwat    
+         1   1              5.6548175      0              45.28837       0              3004           3982         
+     10000   0.99752406     3.3449166      290.33784      44.696334      19.619747      2912           2359         
+     20000   1.0038494      3.3489223      579.34357      44.171675      35.117467      3151           2165         
+     20001   1.0025217      3.3497168      579.45905      44.171189      35.119022      3152           2161         
+Loop time of 579.459 on 1 procs for 20000 steps with 69080 atoms
+
+Performance: 29820.914 tau/day, 34.515 timesteps/s, 2.384 Matom-step/s
+100.0% CPU use with 1 MPI tasks x no OpenMP threads
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 143.22     | 143.22     | 143.22     |   0.0 | 24.72
+Bond    | 12.557     | 12.557     | 12.557     |   0.0 |  2.17
+Neigh   | 308.21     | 308.21     | 308.21     |   0.0 | 53.19
+Comm    | 7.8319     | 7.8319     | 7.8319     |   0.0 |  1.35
+Output  | 0.11452    | 0.11452    | 0.11452    |   0.0 |  0.02
+Modify  | 102.03     | 102.03     | 102.03     |   0.0 | 17.61
+Other   |            | 5.496      |            |       |  0.95
+
+Nlocal:          69080 ave       69080 max       69080 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Nghost:              0 ave           0 max           0 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+Neighs:         281216 ave      281216 max      281216 min
+Histogram: 1 0 0 0 0 0 0 0 0 0
+
+Total # of neighbors = 281216
+Ave neighs/atom = 4.0708743
+Ave special neighs/atom = 0.81297047
+Neighbor list builds = 8718
+Dangerous builds = 70
+System init for write_data ...
+Generated 0 of 3 mixed pair_coeff terms from geometric mixing rule
+WARNING: Dihedrals are defined but no dihedral style is set (../force.cpp:207)
+WARNING: Likewise 1-4 special neighbor interactions != 1.0 (../force.cpp:209)
+WARNING: Not all mixed pair coeffs generated from mixing. Use write_data with 'pair ij' option to store all pair coeffs. (../write_data.cpp:364)
+Total wall time: 0:09:39

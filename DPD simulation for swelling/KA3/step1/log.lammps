@@ -1,0 +1,8 @@
+LAMMPS (29 Aug 2024 - Update 2)
+variable rand equal 123
+variable T equal 1.0
+units lj
+boundary p p p
+
+atom_style full
+log log.polymer.txt
