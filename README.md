@@ -1,5 +1,5 @@
 # SRBPs
-code for "Swelling-induced mechanical interlocking stabilizes crosslinker-free topological hydrogels"
+code for ""Swelling activates latent entanglements as polymer-network junctions"
 
 1. AA MD simualtion for KA3 peptide
 2. DPD simulation for swelling
